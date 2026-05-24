@@ -1,3 +1,7 @@
+overrides:
+  # @electron/rebuild@3.7.2 pulls this from git; redirect to the identical published npm version
+  '@electron/node-gyp': '10.2.0-electron.1'
+
 allowBuilds:
   '@discordjs/opus': true
   electron: true
