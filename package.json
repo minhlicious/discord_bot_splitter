@@ -1,0 +1,62 @@
+{
+  "name": "discord-audio-splitter",
+  "version": "1.0.0",
+  "main": "main.js",
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "scripts": {
+    "start": "electron .",
+    "postinstall": "electron-rebuild -f -w naudiodon,@discordjs/opus",
+    "build": "electron-builder --win --x64",
+    "build:portable": "electron-builder --win portable --x64",
+    "audit": "pnpm audit --audit-level=moderate"
+  },
+  "dependencies": {
+    "discord.js": "^14.0.0",
+    "@discordjs/voice": "^0.17.0",
+    "libsodium-wrappers": "^0.7.13",
+    "naudiodon": "^2.0.0",
+    "opusscript": "^0.1.0",
+    "@discordjs/opus": "^0.9.0",
+    "electron-store": "8.2.0"
+  },
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.0.0",
+    "@electron/rebuild": "^3.0.0"
+  },
+  "build": {
+    "appId": "com.discordaudiosplitter.app",
+    "productName": "Discord Audio Splitter",
+    "win": {
+      "target": [
+        { "target": "nsis", "arch": ["x64"] },
+        { "target": "portable", "arch": ["x64"] }
+      ],
+      "icon": "assets/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "bot.js",
+      "audioRouter.js",
+      "renderer/**/*",
+      "assets/**/*",
+      "node_modules/**/*"
+    ],
+    "asar": true,
+    "asarUnpack": [
+      "node_modules/naudiodon/**/*",
+      "node_modules/@discordjs/opus/**/*",
+      "node_modules/opusscript/**/*"
+    ]
+  }
+}

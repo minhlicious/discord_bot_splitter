@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; img-src 'self' https://cdn.discordapp.com data:; style-src 'self';">
+  <title>Discord Audio Splitter</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div id="header">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="#5865f2" aria-hidden="true">
+      <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 3a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3zm0 4.5a.75.75 0 0 1 .75.75v5.25a.75.75 0 0 1-1.5 0V10.25A.75.75 0 0 1 12 9.5z"/>
+    </svg>
+    <h1>Discord Audio Splitter</h1>
+  </div>
+
+  <div id="config-bar">
+    <div class="field-group">
+      <label for="token-input">Bot Token</label>
+      <input type="password" id="token-input" class="input-token" placeholder="Paste bot token…" autocomplete="off" spellcheck="false">
+    </div>
+    <div class="field-group">
+      <label for="userid-input">Follow User ID</label>
+      <input type="text" id="userid-input" class="input-userid" placeholder="123456789012345678" autocomplete="off" spellcheck="false">
+    </div>
+    <div class="btn-group">
+      <button id="connect-btn" class="btn btn-connect">Connect</button>
+      <button id="stop-btn" class="btn btn-stop" disabled>Stop</button>
+    </div>
+  </div>
+
+  <div id="error-bar" hidden></div>
+
+  <div id="status-bar">
+    <span class="status-dot" id="status-dot"></span>
+    <span id="status-text">Disconnected</span>
+  </div>
+
+  <div id="main-panel">
+    <div id="users-panel">
+      <div class="panel-title">Voice Channel Users <span class="panel-note">(bots hidden)</span></div>
+      <div id="users-list">
+        <div class="empty-state">Connect the bot to see users in voice.</div>
+      </div>
+    </div>
+
+    <div id="cables-panel">
+      <div class="panel-title">Virtual Cables</div>
+      <div id="cables-list">
+        <div class="empty-state">Detecting audio devices…</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
