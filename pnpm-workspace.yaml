@@ -1,0 +1,5 @@
+allowBuilds:
+  '@discordjs/opus': true
+  electron: true
+  naudiodon: true
+  segfault-handler: true

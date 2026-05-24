@@ -11,7 +11,7 @@ function getDevices() {
   const all = naudiodon.getDevices();
   return all
     .filter(d => d.maxOutputChannels > 0)
-    .filter(d => d.name.includes('CABLE') || d.name.toLowerCase().includes('virtual'))
+    // .filter(d => d.name.includes('CABLE') || d.name.toLowerCase().includes('virtual') || /\b(VAIO|AUX)\d*\b/.test(d.name))
     .map(d => ({ id: d.id, name: d.name }));
 }
 
